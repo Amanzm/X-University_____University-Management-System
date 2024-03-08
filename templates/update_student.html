@@ -1,0 +1,86 @@
+{% extends "base.html" %} 
+
+{% block title %} Update Student {% endblock title %}
+
+{% block css %} 
+
+<style>
+    .divider::after,
+    .divider::before {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
+
+    .h-custom {
+      height: calc(100% - 73px);
+    }
+
+    @media (max-width: 450px) {
+      .h-custom {
+        height: 100%;
+      }
+    }
+</style>
+{% endblock css %}
+
+{% block body %}
+<div class="container">
+
+
+
+
+  
+
+
+
+
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="\static\images\20112395_2011.w021.n001.300A.p30.300.jpg" class="img-fluid" alt=" image">
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <form  action="/update_student/{{student.ID}}" method="post" >
+                        <div class="divider d-flex align-items-center my-4">
+                            <p class="text-center  mx-3 mb-0 display-6">Update Student</p>
+                        </div>
+
+                        <!-- name input -->
+                        <div class="form-floating mb-3">
+                            <input type="text" id="name" class="form-control form-control-lg"  placeholder=" "  name="name" required value="{{student.name}}">
+                            <label for="name">Student's Name</label>
+                        </div>
+
+                        <!-- Salary input -->
+                        <div class="form-floating mb-3">
+                            <input type="number" id="cred" class="form-control form-control-lg" placeholder=" " name="cred"
+                            max="300" value="{{student.tot_cred}}"  required />
+                            <label for="cred">Total Credits </label>
+                        </div>
+                       
+                        <div class="form-floating mb-3">
+                        <select class="form-select" required  id="dept" name="dept" >
+                            
+                                {% for d in departments  %}
+                                <option value="{{d.dept_name}}">{{d.dept_name}}</option>
+                                {% endfor %}
+                          </select>
+                          <label for="floatingSelect">Select Department </label>
+                        </div>
+                          
+                       
+
+
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button type="submit" class="btn btn-outline-info btn-lg">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock body %}

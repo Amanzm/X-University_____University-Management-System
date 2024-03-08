@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{%block title%}
+Home
+{%endblock title%}
+
+
+{% block body %}
+
+<div class="container mt-5">
+    <!-- Student Profile Card -->
+    <div class="card">
+      <div class="card-header bg-info">
+        My Profile
+      </div>
+      <div class="card-body">
+        <div class="row">
+            <div class="col-md-1">
+            
+            </div>
+          <div class="col-md-3">
+            <!-- Student Image -->
+            <img src="static\images\student.jpg" class="img-fluid rounded-circle" alt="Student Image">
+          </div>
+          <div class="col-md-1">
+            
+          </div>
+          <div class="col-md-7">
+            <!-- Student Information -->
+            
+            <h5 class="card-title">John Doe</h5> <!-- Student Name -->
+            <p class="card-text">Department: Computer Science</p> <!-- Department Name -->
+            <p class="card-text">Advisor: Dr. Smith</p> <!-- Advisor Name -->
+            <p class="card-text">Section: A</p> <!-- Section Name -->
+            <p class="card-text">Year: 2023</p> <!-- Year -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+{%endblock body%}

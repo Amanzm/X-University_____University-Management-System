@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{%block title%}
+Instructor
+{%endblock title%}
+
+
+{% block body %}
+
+
+<div class="container mb-5 mt-5 table-responsive">
+    
+
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Instructors at <i class="fa-brands fa-x-twitter fa-sm"></i> </h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <a href="/add_instructor"><button class="btn  btn-outline-secondary"><i class="fa-solid fa-plus fa-fade"></i>ㅤAdd Instructorㅤ</button> </a> 
+        <hr class="my-4">
+      </div>
+
+    <table class="table table-striped caption-top  ">
+        <!--table-success-->
+
+        <thead class="table ">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Salary(₹)</th>
+            <th scope="col" colspan="2" class="text-center">Actions</th>
+
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for inst in instructors %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <th scope="row">{{inst.ID}}</th>
+            <td>{{inst.name}}</td>
+            <td>{{inst.dept_name}}</td>
+            <td>{{inst.salary}}</td>
+            
+            <td><a href="/update_instructor/{{inst.ID}}"><button class="btn btn-sm btn-outline-info">Update</button> </a> </td>
+    <td><a href="/delete_instructor/{{inst.ID}}"><button onclick="return confirm('Are you sure to Delete Instructor');" class="btn btn-sm btn-outline-danger">Delete</button> </a> </td>
+    
+          </tr>
+          {%endfor%}
+
+      
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="100%" align='center'>
+                   {{ instructors|length }} records  found.
+                </td>
+             </tr>
+        </tfoot>
+      </table>
+</div>
+{%endblock body%}

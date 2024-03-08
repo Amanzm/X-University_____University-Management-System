@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+
+{%block title%}
+
+{%endblock title%}
+
+
+{% block body %}
+
+<div class="container mt-5 mb-5">
+
+
+
+
+  
+
+
+  <div class="row">
+      
+
+      <div class="col-md-12">
+        <div class="card  text-center">
+    
+            <div class="card-body">
+              <div class="jumbotron jumbotron-fluid ">
+                <h1 class="display-4">Department of {% block deptname%} {% endblock deptname%}</h1>
+                
+                <hr class="my-4">
+              </div>
+            </div>
+            
+        
+          </div>
+      </div>
+
+    </div>
+
+
+
+
+
+    <div class="row">
+       
+        
+        <div class="col-md-6">
+          <div class="card mb-4">
+            {% block img%} 
+            {% endblock img%}
+            
+          </div>
+        </div>
+  
+
+        <div class="col-md-6">
+            <div class="card  text-center">
+        
+                <div class="card-body">
+                  <div class="jumbotron jumbotron-fluid ">
+                    <h1 class="display-6">About the Department</h1>
+                    <p class="lead"> 
+                        {% block about%} {% endblock about%}
+                    </p>
+                    <hr class="my-4">
+                  </div>
+                </div>
+                
+            
+              </div>
+          </div>
+        
+
+    </div>
+
+
+
+
+    <div class="row">
+      
+
+        <div class="col-md-6">
+          <div class="card  text-center">
+      
+              <div class="card-body">
+                <div class="jumbotron jumbotron-fluid ">
+                  <h1 class="display-6">Vision</h1>
+                  <p class="lead">{% block vision%} {% endblock vision%}</p>
+                  <hr class="my-4">
+                </div>
+              </div>
+              
+          
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card  text-center">
+        
+                <div class="card-body">
+                  <div class="jumbotron jumbotron-fluid ">
+                    <h1 class="display-6">Mission  </h1>
+                    <p class="lead">{% block mission%} {% endblock mission%}</p>
+                    <hr class="my-4">
+                  </div>
+                </div>
+                
+            
+              </div>
+          </div>
+  
+      </div>
+
+      <hr class="my-4">
+      
+      
+      
+      {%block content%}
+      
+      {%endblock content%}
+      
+    </div>
+      
+
+
+      {%endblock body%}

@@ -1,0 +1,172 @@
+{% extends "dept_base.html" %}
+
+{% block title %}Finance{% endblock title %}
+
+{% block deptname%}Finance{% endblock deptname%}
+{% block img%} 
+            <img src="static\images\finance.jpg" class="card-img-top" alt="...">
+{% endblock img%}
+
+{% block about%}Step into the world of finance where numbers rule and investments are our game! Explore the intricacies of markets, stocks, and the art of turning pennies into prosperity. Whether you dream of Wall Street or just want to manage your money better, join us in mastering the language of finance. {% endblock about%}
+     
+
+{% block vision%} We envision a future where financial literacy is universal, empowering individuals to make sound decisions and secure their financial futures. Our goal is to revolutionize the world of finance, demystifying complexities and fostering economic empowerment.{% endblock vision%}
+{% block mission%} Our mission is to provide students with a comprehensive understanding of finance, blending theory with real-world applications. Through experiential learning and industry partnerships, we equip students with the knowledge and skills to thrive in dynamic financial landscapes, while promoting ethical and responsible financial practices.{% endblock mission%}
+
+{% block content %} 
+{% if current_user.is_authenticated and current_user.role == 'admin' %}
+        
+
+<div class="accordion " id="accordionExample">
+    <!--1-->
+    <div class="jumbotron  text-center">
+        <h1 class="display-4">Courses </h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    </div> 
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="btn btn-outline-info accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+Courses            </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <table class="table table-striped caption-top">
+                <thead class="table">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">course id</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Credits</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% for c in courses %}
+                    
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ c[0]}}</td>
+                        <td>{{ c[1] }}</td>
+                        <td>{{ c[2] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="100%" align='center'>
+                            {{ courses|length }} Courses
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>            </div>
+      </div>
+    </div>
+    <hr class="my-4">
+
+    <!--2-->
+
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Instructors </h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    </div>
+
+
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="btn btn-outline-info accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+Instructors            </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <table class="table table-striped caption-top">
+                <thead class="table">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% for i in instructors %}
+                    
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ i[0]}}</td>
+                        <td>{{ i[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="100%" align='center'>
+                            {{ instructors|length }} Instructors
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>            </div>
+      </div>
+    </div>
+    <hr class="my-4">
+
+
+
+
+ <!--3-->
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Students </h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="btn btn-outline-info accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+Students            </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <table class="table table-striped caption-top">
+                <thead class="table">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% for i in students %}
+                    
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ i[0]}}</td>
+                        <td>{{ i[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="100%" align='center'>
+                            {{ students|length }} Students
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>            </div>
+      </div>
+    </div>
+    <hr class="my-4">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+{% endif %}
+
+{% endblock content %} 

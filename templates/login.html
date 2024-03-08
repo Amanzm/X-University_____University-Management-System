@@ -1,0 +1,85 @@
+{% extends "base.html" %} 
+
+{% block title %} Log In {% endblock title %}
+
+{% block css %} 
+
+<style>
+    .divider::after,
+    .divider::before {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
+
+    .h-custom {
+      height: calc(100% - 73px);
+    }
+
+    @media (max-width: 450px) {
+      .h-custom {
+        height: 100%;
+      }
+    }
+</style>
+{% endblock css %}
+
+{% block body %}
+<div class="container">
+
+
+
+   
+  
+
+
+
+
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt=" image">
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <form  action="login" method="post" >
+                        <div class="divider d-flex align-items-center my-4">
+                            <p class="text-center  mx-3 mb-0 display-5">X University</p>
+                        </div>
+
+                        <!-- ID input -->
+                        <div class="form-floating mb-3">
+                            <input type="text" id="sid" class="form-control form-control-lg"  placeholder=" "  name="sid" required>
+                            <label for="sid">ID</label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-floating mb-3">
+                            <input type="password" id="passw" class="form-control form-control-lg" placeholder="Enter password" name="password" required />
+                            <label for="passw">Password</label>
+                        </div>
+                       
+                       <!-- Radio buttons for student/admin selection -->
+<div class="mb-4">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="role" id="studentRadio" value="student" required>
+        <label class="form-check-label" for="studentRadio">Student</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="role" id="adminRadio" value="admin" required>
+        <label class="form-check-label" for="adminRadio">Admin</label>
+    </div>
+</div>
+
+
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Log In</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock body %}

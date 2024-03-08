@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{%block title%}
+Admin
+{%endblock title%}
+
+
+{% block body %}
+
+
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <img src="static\images\dept.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Department</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="/departments" class="btn btn-outline-info">Supervise Departments</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <img src="static\images\inst.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Instructors</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="/instructors" class="btn btn-outline-primary">Administer Instructors</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <img src="static\images\student_.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Students</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="/students" class="btn btn-outline-secondary">Manage Students</a>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <img src="static\images\section.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Sections</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="/sections" class="btn btn-outline-success">Handle Sections</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock body%}
