@@ -213,6 +213,35 @@ def  sections():
     return render_template("sections.html",sections=sections,sec=sec)
 
 
+@app.route('/add_section', methods=['GET', 'POST'])
+@login_required
+def add_section():
+
+    course = Course.query.distinct(Course.course_id).all()
+    building=Classroom.query.distinct(Classroom.building).all()
+    room=Classroom.query.distinct(Classroom.room_number).all()   
+    if request.method == "POST":
+        id=request.form['id']
+        course = request.form['course']
+        sem = request.form['sem']
+        year = request.form['year']
+        building = request.form['building']
+        room = request.form['room']
+        time = request.form['time']
+
+        try:
+            new_sec = Section(course_id=course,sec_id=id,semester=sem,year=year,building=building,room_number=room,time_slot_id=time)
+            db.session.add(new_sec)
+            db.session.commit()
+            flash("Section Added Successfully!", "success")
+            return redirect('/instructors')
+        except SQLAlchemyError as e:
+            db.session.rollback()  
+            flash("Error occurred while Adding", "danger")
+            
+
+    return render_template('add_section.html', course=course,building=building,room=room)
+
 
 
 
@@ -402,7 +431,9 @@ def cse():
         instructors = db.session.execute(query3).fetchall()
 
     except Exception as e:
-       
+        students = []  
+        courses = []  
+        instructors = []
         flash("Error occurred while fetching data", "danger")
    
 
@@ -435,7 +466,9 @@ def  fin():
     except Exception as e:
         
         flash("Error occurred while fetching data", "danger")
-       
+        students = []  
+        courses = []  
+        instructors = []
 
     return render_template("fin.html", students=students, courses=courses, instructors=instructors)
 
@@ -467,7 +500,9 @@ def  hist():
     except Exception as e:
         
         flash("Error occurred while fetching data", "danger")
-        
+        students = []  
+        courses = []  
+        instructors = []
     return render_template("hist.html", students=students, courses=courses, instructors=instructors)
 
 
@@ -496,7 +531,9 @@ def  ee():
 
     except Exception as e:
         flash("Error occurred while fetching data", "danger")
-        
+        students = []  
+        courses = []  
+        instructors = []
     return render_template("ee.html", students=students, courses=courses, instructors=instructors)
 
 
@@ -528,7 +565,9 @@ def  bio():
     except Exception as e:
         
         flash("Error occurred while fetching data", "danger")
-        
+        students = []  
+        courses = []  
+        instructors = []
     return render_template("bio.html", students=students, courses=courses, instructors=instructors)
 
 
@@ -559,7 +598,9 @@ def  mus():
     except Exception as e:
         
         flash("Error occurred while fetching data", "danger")
-        
+        students = []  
+        courses = []  
+        instructors = [] 
     return render_template("mus.html", students=students, courses=courses, instructors=instructors)
 
 
@@ -590,7 +631,9 @@ def  phy():
     except Exception as e:
         
         flash("Error occurred while fetching data", "danger")
-        
+        students = []  
+        courses = []  
+        instructors = []
     return render_template("phy.html", students=students, courses=courses, instructors=instructors)
 
 
