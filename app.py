@@ -164,7 +164,12 @@ def dashboard():
     if current_user.role == 'admin':
         return render_template('admin.html')
     elif current_user.role == 'student':
-        return render_template('student.html')
+        student = Student.query.filter_by(ID=current_user.sid).first()
+        if student:
+            courses_taken = Takes.query.filter_by(ID=current_user.sid).all()
+            return render_template("student.html", student=student, courses_taken=courses_taken)
+        else:
+            return "Student not found", 404
 
 @app.route('/logout')
 @login_required
@@ -196,21 +201,25 @@ def  admin():
     return render_template("admin.html")
 
 
-
 @app.route('/student')
 @login_required
-def  studen():
-    return render_template("student.html")
-
+def student():
+    student = Student.query.filter_by(ID=current_user.sid).first()
+    if student:
+        courses_taken = Takes.query.filter_by(ID=current_user.sid).all()
+        return render_template("student.html", student=student, courses_taken=courses_taken)
+    else:
+        return "Student not found", 404
+    
 """__________________________Admin section_______________________________________________"""
 
 @app.route('/sections')
 @login_required
 def  sections():
-    sections=Section.query.all()
-    sec = db.session.query(Section.sec_id).distinct().all()
-    sec = [s[0] for s in sec]  # Extract sec_id from the list of tuples
-    return render_template("sections.html",sections=sections,sec=sec)
+    sections = Section.query.order_by(Section.sec_id).all()
+    sec = db.session.query(Section.sec_id).distinct().order_by(Section.sec_id).all()
+    sec = [s[0] for s in sec]  
+    return render_template("sections.html", sections=sections, sec=sec)
 
 
 @app.route('/add_section', methods=['GET', 'POST'])
@@ -218,8 +227,9 @@ def  sections():
 def add_section():
 
     course = Course.query.distinct(Course.course_id).all()
-    building=Classroom.query.distinct(Classroom.building).all()
-    room=Classroom.query.distinct(Classroom.room_number).all()   
+    building = db.session.query(Classroom.building).distinct().all()
+    room = db.session.query(Classroom.room_number).distinct().all()
+
     if request.method == "POST":
         id=request.form['id']
         course = request.form['course']
@@ -234,7 +244,7 @@ def add_section():
             db.session.add(new_sec)
             db.session.commit()
             flash("Section Added Successfully!", "success")
-            return redirect('/instructors')
+            return redirect('/sections')
         except SQLAlchemyError as e:
             db.session.rollback()  
             flash("Error occurred while Adding", "danger")
@@ -246,11 +256,50 @@ def add_section():
 
 
 """____________________________________________________"""
+
+@app.route('/add_course', methods=['GET', 'POST'])
+@login_required
+def add_course():
+    departments = Department.query.distinct(Department.dept_name).all()  # Fetch departments
+
+    if request.method == 'POST':
+        id = request.form['id']
+        name = request.form['name']
+        dept = request.form['dept']
+        credits = request.form['credits']
+
+        try:
+            # Ensure the course ID is unique
+            existing_course = Course.query.filter_by(course_id=id).first()
+            if existing_course:
+                flash("Course ID already exists. Please choose a different one.", "danger")
+                return redirect(url_for('add_course'))
+
+            # Create and add the new course to the database
+            new_course = Course(course_id=id, title=name, dept_name=dept, credits=credits)
+            db.session.add(new_course)
+            db.session.commit()
+            flash("Course Added Successfully!", "success")
+            return redirect(url_for('departments'))
+
+        except Exception as e:
+            db.session.rollback()
+            flash("Error occurred while adding course: " + str(e), "danger")
+            return redirect(url_for('add_course'))  # Redirect back to the add course page with dept_name parameter
+
+    return render_template('add_course.html', departments=departments)
+
 @app.route('/departments')
 @login_required
 def  departments():
     return render_template("departments.html")
 
+@app.route('/classrooms')
+@login_required
+def  classrooms():
+    classrooms=Classroom.query.all()
+
+    return render_template("classrooms.html",classrooms=classrooms)
 
 
 
@@ -298,6 +347,11 @@ def add_instructor():
         salary = request.form['salary']
 
         try:
+            existing_course = Instructor.query.filter_by(ID=id).first()
+            if existing_course:
+                flash("Instructor ID already exists. Please choose a different one.", "danger")
+                return redirect(url_for('add_instructor'))
+            
             new_instructor = Instructor(ID=id, name=name, dept_name=dept_name, salary=salary)
             db.session.add(new_instructor)
             db.session.commit()
@@ -348,7 +402,7 @@ def update_student(ID):
             flash("Profile Updated Successfully!", "success")
             return redirect('/students')
         except SQLAlchemyError as e:
-            db.session.rollback()  # Rollback the transaction in case of an error
+            db.session.rollback()  
             flash("Error occurred while Updating", "danger")
 
     return render_template('update_student.html',student=student, departments=dept)
@@ -366,8 +420,15 @@ def add_student():
         dept_name = request.form['dept']
 
         try:
+            existing_course = Student.query.filter_by(ID=id).first()
+            if existing_course:
+                flash("Student ID already exists. Please choose a different one.", "danger")
+                return redirect(url_for('add_student'))
+            
             new_student = Student(ID=id, name=name, dept_name=dept_name, tot_cred=0)
+            new_user=User(sid=id,password=id,role="student")
             db.session.add(new_student)
+            db.session.add(new_user)
             db.session.commit()
             flash("Student Added Successfully!", "success")
             return redirect('/students')
@@ -383,9 +444,10 @@ def add_student():
 @login_required
 def delete_student(ID):
     student = Student.query.get(ID)
-
+    user = User.query.filter_by(sid=ID).first() 
     if student:
         db.session.delete(student)
+        db.session.delete(user)
         db.session.commit()
         flash("Student Removed !", "warning")
         return redirect('/students')
@@ -394,18 +456,11 @@ def delete_student(ID):
 
 
 
-@app.route('/dept_base/<string:dept_name>', methods=['GET', 'POST'])
-@login_required
-def show_department(dept_name):
-    department = Department.query.get(dept_name)
-
-    
-
-    return redirect('/students')
 
 
 
-"""__________________________________"""
+
+"""______________________________________________________________________________________________________"""
 @app.route('/cse')
 def cse():
     query1 = text("""
@@ -423,6 +478,7 @@ def cse():
         FROM instructor
         WHERE instructor.dept_name = 'Comp. Sci.'
     """)
+    dept = Department.query.distinct(Department.dept_name).all()
 
     try:
         # Execute the SQL queries
@@ -437,7 +493,7 @@ def cse():
         flash("Error occurred while fetching data", "danger")
    
 
-    return render_template("cse.html", students=students, courses=courses, instructors=instructors)
+    return render_template("cse.html", students=students, courses=courses, instructors=instructors,dept=dept)
 
 @app.route('/fin')
 def  fin():

@@ -36,11 +36,16 @@ Courses            </button>
           </h2>
           <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
             <div class="accordion-body">
+                <div class="jumbotron text-center">
+                    <a href="/add_course"><button class="btn btn-outline-secondary"><i class="fa-solid fa-plus fa-fade"></i> Add Course </button></a>
+                    <hr class="my-4">
+                </div>
+
                 <table class="table table-striped caption-top">
                     <thead class="table">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">course id</th>
+                            <th scope="col">Course id</th>
                             <th scope="col">Title</th>
                             <th scope="col">Credits</th>
                         </tr>
@@ -53,6 +58,7 @@ Courses            </button>
                             <td>{{ c[0]}}</td>
                             <td>{{ c[1] }}</td>
                             <td>{{ c[2] }}</td>
+
                         </tr>
                         {% endfor %}
                     </tbody>

@@ -1,11 +1,163 @@
 {% extends "base.html" %}
-
-{%block title%}
-About Us
-{%endblock title%}
-
-
+{% block title %} About Us {% endblock title %}
 {% block body %}
 
-<h1>This is About Us</h1>
-{%endblock body%}
+<div class="container">
+  <!-- About Us Section -->
+  <section class="mb-5">
+    <hr>
+    <h2 class="display-4 text-center mb-5">Welcome to X University!</h2>
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <img src="static/images/x.webp" class="img-fluid rounded" alt="About Us Image">
+      </div>
+      <div class="col-lg-6">
+        <h3 class="display-6 mb-4">Our Story</h3>
+        <p class="lead">X University is not just a place of learning; it's a community where dreams are nurtured, passions are ignited, and friendships are forged. Our journey began with a vision to create a hub of innovation and excellence, and today, we stand as a beacon of knowledge, inspiring generations to pursue their ambitions and make a difference in the world.</p>
+      </div>
+    </div>
+    <hr>
+  </section>
+
+  <!-- Mission and Vision Section -->
+  <section class="mb-5">
+    <h2 class="display-4 text-center mb-5">Mission & Vision</h2>
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h3 class="display-6 mb-4">Our Mission</h3>
+        <p class="lead">To empower individuals with knowledge, skills, and values to thrive in a rapidly changing world, fostering a culture of lifelong learning, critical thinking, and social responsibility.</p>
+      </div>
+      <div class="col-lg-6">
+        <h3 class="display-6 mb-4">Our Vision</h3>
+        <p class="lead">To be a global leader in education, innovation, and social impact, driving positive change and shaping a sustainable future for all.</p>
+      </div>
+    </div>
+    <hr>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="display-4 text-center mb-5">Our Values</h2>
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h4 class="card-title">Excellence</h4>
+            <p class="card-text">We strive for excellence in all endeavors, fostering a culture of continuous improvement and innovation.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h4 class="card-title">Diversity & Inclusion</h4>
+            <p class="card-text">We celebrate diversity and promote an inclusive environment where all individuals are respected, valued, and empowered.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h4 class="card-title">Community Engagement</h4>
+            <p class="card-text">We are committed to serving our communities through meaningful engagement, collaboration, and social responsibility initiatives.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="display-4 text-center mb-5">Accreditation</h2>
+    <div class="text-center">
+      <p class="lead">X University is accredited by Elon Musk and maintains high academic standards to ensure quality education and continuous improvement.</p>
+    </div>
+    <hr>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="display-4 text-center mb-5">Our Leadership</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-4 mb-4">
+        <div class="card">
+          <img src="static/images/p.jpg" class="card-img-top" alt="Leader Image">
+          <div class="card-body text-center">
+            <h5 class="card-title">Elon Musk </h5>
+            <p class="card-text">President</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card">
+          <img src="static/images/vp.jpg" class="card-img-top" alt="Leader Image">
+          <div class="card-body text-center">
+            <h5 class="card-title">Aman Modan</h5>
+            <p class="card-text">Vice President</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="mb-5">
+    <h2 class="display-4 text-center mb-5">What People Say</h2>
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="card text-center">
+                <div class="card-body">
+                  <p class="card-text">"X University has been an incredible journey for me. The faculty, the environment, and the opportunities for growth have exceeded my expectations."</p>
+                  <footer class="blockquote-footer">Bill Gates</footer>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="card text-center">
+                <div class="card-body">
+                  <p class="card-text">"I'm proud to be a part of X University, where learning goes beyond the classroom and prepares us for the real world challenges."</p>
+                  <footer class="blockquote-footer">Aman Modan</footer>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev " type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon  " aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <hr>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="display-4 text-center mb-5">Contact Us</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="card text-center">
+          <div class="card-body">
+            <p class="lead">Have questions or need more information? Reach out to us!</p>
+            <ul class="list-unstyled">
+              <li>Email: info@xuniversity.com</li>
+              <li>Phone: +91-79907XXXXX</li>
+              <li>Address: X University Street, Jaipur, India</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock body %}

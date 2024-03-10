@@ -18,7 +18,7 @@
   <style>
     /* Custom styles */
     .custom-navbar {
-      background-color: #e3f2fd !important; /* Set your custom color here */
+      background-color: #02cdfa !important; /* Set your custom color here */
     }
   </style>
 
@@ -28,9 +28,9 @@
 
 
 
-  <body class="bg-light">
+  <body class="bg-light ">
 
-    <nav class="navbar navbar-expand-lg p-3 bg-light" >
+    <nav class="navbar navbar-expand-lg   " >
         <div class="container-fluid ">
           <a class="navbar-brand" href="/"><i class="fa-brands fa-x-twitter fa-2xl"></i> University  </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,8 @@
                       Other
                   </a>
                   <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><a class="dropdown-item" href="/aboutus">Miscellaneous
+                      </a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="/logout">Log Out</a></li>
                   </ul>
@@ -84,15 +85,10 @@
                   <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="/login">Log In</a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><a class="dropdown-item" href="/">Join us at <i class="fa-brands fa-x-twitter fa-sm"></i> now</a></li>
                   </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/">         </a>
-            </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/"> Join <i class="fa-brands fa-x-twitter"></i> Now </a>
-            </li>
+              
           {% endif %}
     
             </ul>
@@ -103,6 +99,8 @@
             </form>          </div>
         </div>
       </nav>
+
+
 
       {% with messages=get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -116,15 +114,32 @@
     {% endif %}
   {% endwith %}
 
+  <div class="content">
+    {% block body %}{% endblock body %}
+  </div>
   
-{% block body %}
+<footer class="text-center text-dark " style="background-color: #e6eded">
+  <div class="container">
+    
+    <section class="mb-3">
+      <div class="row d-flex justify-content-center">
+        <hr class="my-4" />
+        <div class="col-lg-12">
+          <p>
+            Welcome to X University, where every student's journey is unique and filled with endless possibilities. Our commitment to excellence in education, innovation, and community engagement sets us apart. Join us in shaping the future, one inspired mind at a time.
+          </p>
+        </div>
+      </div>
+    </section>
+    <hr class="bg-swhite">
+  </div>
 
-
-
-{% endblock body %}
-
- 
-
+  <div class="text-center p-3" style="background-color: #e6eded">
+    &copy; 2024 X University. All rights reserved.
+    <br>
+    Designed with ❤️ by Amanzm00
+  </div>
+</footer>
   
    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
 

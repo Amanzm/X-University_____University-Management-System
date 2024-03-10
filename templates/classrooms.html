@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{%block title%}
+Classrooms
+{%endblock title%}
+
+
+{% block body %}
+
+
+<div class="container mb-5 mt-5 table-responsive">
+    
+
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Classrooms at <i class="fa-brands fa-x-twitter fa-sm"></i> </h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+      </div>
+
+    <table class="table table-striped caption-top  ">
+        <!--table-success-->
+
+        <thead class="table ">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Building</th>
+            <th scope="col">Room</th>
+            <th scope="col">Capacity</th>
+            
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for stu in classrooms %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <th scope="row">{{stu.building}}</th>
+            <td>{{stu.room_number}}</td>
+            <td>{{stu.capacity}}</td>
+          </tr>
+          {%endfor%}
+
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="100%" align='center'>
+                   {{ classrooms|length }} Classrooms.
+                </td>
+             </tr>
+        </tfoot>
+      </table>
+</div>
+{%endblock body%}

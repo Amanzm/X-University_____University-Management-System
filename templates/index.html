@@ -1,11 +1,212 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {%block title%} Home {%endblock title%} {% block body
+%}
 
-{%block title%}
-Home
-{%endblock title%}
+<!-- Hero Section -->
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-4">Welcome to X University!</h1>
+    <p class="lead">
+      Where curiosity meets discovery, and every mind is ignited with the flame
+      of knowledge!
+    </p>
+  </div>
+</div>
 
+<!-- Main Content Section -->
+<div class="container">
+  <!-- Carousel -->
+  <div
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="static\images\r2.jpg" class="d-block w-100" alt="..." />
+      </div>
+      <div class="carousel-item">
+        <img src="static\images\r3.jpg" class="d-block w-100" alt="..." />
+      </div>
+      <div class="carousel-item">
+        <img src="static\images\r1.jpg" class="d-block w-100" alt="..." />
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 
-{% block body %}
+  <hr>
+  <!-- About Us Section -->
+  <section class="mb-5">
+    <h2 class="mb-3">About Us</h2>
+    <p class="lead">
+      X University is committed to providing quality education and fostering an
+      environment where students can thrive intellectually and personally.
+    </p>
+    <hr>
+  </section>
 
-<h1>Index page</h1>
+ <!-- Programs Offered Section -->
+<section class="mb-5">
+  
+    <h2 class="mb-3">Programs Offered</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Engineering</h5>
+            <p class="card-text">
+              Join the ranks of innovators and problem-solvers with our dynamic
+              Engineering programs.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Finance</h5>
+            <p class="card-text">
+              Dive into the world of finance and investment with our Finance program.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Biology</h5>
+            <p class="card-text">
+              Explore the wonders of life sciences and biological research through our Biology program.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </section>
+  
+
+  <section class="mb-5">
+    <h2 class="mb-3">Admissions Information</h2>
+    <p class="lead">
+      Ready to embark on your academic journey? Learn more about our admissions
+      process and start your application today!
+    </p>
+    <a href="#" class="btn btn-outline-info">Apply Now</a>
+    <hr>
+
+  </section>
+
+  <!-- Campus Facilities Section -->
+  <section class="mb-5">
+    <h2 class="mb-3">Campus Facilities</h2>
+    <p class="lead">
+      Our state-of-the-art campus offers a wide range of facilities to support
+      your academic and extracurricular pursuits.
+    </p>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img
+            src="static/images/library.jpg"
+            class="card-img-top"
+            alt="Library"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Library</h5>
+            <p class="card-text">
+              Access a vast collection of resources and study in a quiet,
+              conducive environment.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img
+            src="static/images/laboratory.jpg"
+            class="card-img-top"
+            alt="Laboratory"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Laboratories</h5>
+            <p class="card-text">
+              Engage in hands-on learning and research in our well-equipped
+              laboratories.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img
+            src="static/images/sports.jpg"
+            class="card-img-top"
+            alt="Sports Facilities"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Sports Facilities</h5>
+            <p class="card-text">
+              Stay active and healthy with our range of sports facilities and
+              recreational activities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+</section>
+  <section>
+    <h2 class="mb-3">Contact Information</h2>
+    <p class="lead">
+      Have questions or need more information? Contact us today!
+    </p>
+    <ul class="list-unstyled">
+      <li>Email: info@xuniversity.com</li>
+      <li>Phone: +91-79907XXXXX</li>
+      <li>Address: X University Street, Jaipur, India</li>
+    </ul>
+
+  </section>
+</div>
+
 {%endblock body%}

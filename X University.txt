@@ -122,14 +122,29 @@ ________________________________________________________
 
 
 
--- Insert entries into the classroom table
+-- Insert entries into the classroom table 
 INSERT INTO classroom (building, room_number, capacity)
 VALUES 
 ('Packard', '101', 500),
-('Painter', '514', 70),
-('Taylor', '3128', 30),
-('Watson', '100', 120),
-('Watson', '120', 50);
+('Packard', '100', 120),
+('Packard', '120', 70),
+('Packard', '3128', 100),
+('Packard', '514', 500),
+('Painter', '101', 120),
+('Painter', '100', 70),
+('Painter', '120', 100),
+('Painter', '3128', 500),
+('Painter', '514', 120),
+('Watson', '101', 70),
+('Watson', '100', 100),
+('Watson', '120', 500),
+('Watson', '3128', 120),
+('Watson', '514', 70),
+('Taylor', '101', 120),
+('Taylor', '100', 70),
+('Taylor', '120', 100),
+('Taylor', '3128', 500),
+('Taylor', '514', 120);
 
 -- Insert entries into the department table
 INSERT INTO department (dept_name, building, budget)
@@ -178,40 +193,40 @@ VALUES
 -- Insert entries into the section table
 INSERT INTO section (course_id, sec_id, semester, year, building, room_number, time_slot_id)
 VALUES 
-('BIO-101', '1', 'Summer', 2009, 'Painter', '514', 'B'),
-('BIO-301', '1', 'Summer', 2010, 'Painter', '514', 'A'),
-('CS-101', '1', 'Fall', 2009, 'Packard', '101', 'H'),
-('CS-101', '1', 'Spring', 2010, 'Packard', '101', 'F'),
-('CS-190', '1', 'Spring', 2009, 'Taylor', '3128', 'E'),
-('CS-190', '2', 'Spring', 2009, 'Taylor', '3128', 'A'),
-('CS-315', '1', 'Spring', 2010, 'Watson', '120', 'D'),
-('CS-319', '1', 'Spring', 2010, 'Watson', '100', 'B'),
-('CS-319', '2', 'Spring', 2010, 'Taylor', '3128', 'C'),
-('CS-347', '1', 'Fall', 2009, 'Taylor', '3128', 'A'),
-('EE-181', '1', 'Spring', 2009, 'Taylor', '3128', 'C'),
-('FIN-201', '1', 'Spring', 2010, 'Packard', '101', 'B'),
-('HIS-351', '1', 'Spring', 2010, 'Painter', '514', 'C'),
-('MU-199', '1', 'Spring', 2010, 'Packard', '101', 'D'),
-('PHY-101', '1', 'Fall', 2009, 'Watson', '100', 'A');
+('BIO-101', '1', 'Summer', 2024, 'Painter', '514', 'B'),
+('BIO-301', '1', 'Summer', 2024, 'Painter', '514', 'A'),
+('CS-101', '1', 'Fall', 2024, 'Packard', '101', 'H'),
+('CS-101', '1', 'Spring', 2024, 'Packard', '101', 'F'),
+('CS-190', '1', 'Spring', 2024, 'Taylor', '3128', 'E'),
+('CS-190', '2', 'Spring', 2024, 'Taylor', '3128', 'A'),
+('CS-315', '1', 'Spring', 2024, 'Watson', '120', 'D'),
+('CS-319', '1', 'Spring', 2024, 'Watson', '100', 'B'),
+('CS-319', '2', 'Spring', 2024, 'Taylor', '3128', 'C'),
+('CS-347', '1', 'Fall', 2024, 'Taylor', '3128', 'A'),
+('EE-181', '1', 'Spring', 2024, 'Taylor', '3128', 'C'),
+('FIN-201', '1', 'Spring', 2024, 'Packard', '101', 'B'),
+('HIS-351', '1', 'Spring', 2024, 'Painter', '514', 'C'),
+('MU-199', '1', 'Spring', 2024, 'Packard', '101', 'D'),
+('PHY-101', '1', 'Fall', 2024, 'Watson', '100', 'A');
 
 -- Insert entries into the teaches table
 INSERT INTO teaches (ID, course_id, sec_id, semester, year)
 VALUES 
-('10101', 'CS-101', '1', 'Fall', 2009),
-('10101', 'CS-315', '1', 'Spring', 2010),
-('10101', 'CS-347', '1', 'Fall', 2009),
-('12121', 'FIN-201', '1', 'Spring', 2010),
-('15151', 'MU-199', '1', 'Spring', 2010),
-('22222', 'PHY-101', '1', 'Fall', 2009),
-('32343', 'HIS-351', '1', 'Spring', 2010),
-('45565', 'CS-101', '1', 'Spring', 2010),
-('45565', 'CS-319', '1', 'Spring', 2010),
-('76766', 'BIO-101', '1', 'Summer', 2009),
-('76766', 'BIO-301', '1', 'Summer', 2010),
-('83821', 'CS-190', '1', 'Spring', 2009),
-('83821', 'CS-190', '2', 'Spring', 2009),
-('83821', 'CS-319', '2', 'Spring', 2010),
-('98345', 'EE-181', '1', 'Spring', 2009);
+('10101', 'CS-101', '1', 'Fall', 2024),
+('10101', 'CS-315', '1', 'Spring', 2024),
+('10101', 'CS-347', '1', 'Fall', 2024),
+('12121', 'FIN-201', '1', 'Spring', 2024),
+('15151', 'MU-199', '1', 'Spring', 2024),
+('22222', 'PHY-101', '1', 'Fall', 2024),
+('32343', 'HIS-351', '1', 'Spring', 2024),
+('45565', 'CS-101', '1', 'Spring', 2024),
+('45565', 'CS-319', '1', 'Spring', 2024),
+('76766', 'BIO-101', '1', 'Summer', 2024),
+('76766', 'BIO-301', '1', 'Summer', 2024),
+('83821', 'CS-190', '1', 'Spring', 2024),
+('83821', 'CS-190', '2', 'Spring', 2024),
+('83821', 'CS-319', '2', 'Spring', 2024),
+('98345', 'EE-181', '1', 'Spring', 2024);
 
 -- Insert entries into the student table
 INSERT INTO student (ID, name, dept_name, tot_cred)
@@ -233,28 +248,28 @@ VALUES
 -- Insert entries into the takes table
 INSERT INTO takes (ID, course_id, sec_id, semester, year, grade)
 VALUES 
-('00128', 'CS-101', '1', 'Fall', 2009, 'A'),
-('00128', 'CS-347', '1', 'Fall', 2009, 'A'),
-('12345', 'CS-101', '1', 'Fall', 2009, 'C'),
-('12345', 'CS-190', '2', 'Spring', 2009, 'A'),
-('12345', 'CS-315', '1', 'Spring', 2010, 'A'),
-('12345', 'CS-347', '1', 'Fall', 2009, 'A'),
-('19991', 'HIS-351', '1', 'Spring', 2010, 'B'),
-('23121', 'FIN-201', '1', 'Spring', 2010, 'C+'),
-('44553', 'PHY-101', '1', 'Fall', 2009, 'B'),
-('45678', 'CS-101', '1', 'Fall', 2009, 'F'),
-('45678', 'CS-101', '1', 'Spring', 2010, 'B+'),
-('45678', 'CS-319', '1', 'Spring', 2010, 'B'),
-('54321', 'CS-101', '1', 'Fall', 2009, 'A'),
-('54321', 'CS-190', '2', 'Spring', 2009, 'B+'),
-('55739', 'MU-199', '1', 'Spring', 2010, 'A'),
-('76543', 'CS-101', '1', 'Fall', 2009, 'A'),
-('76543', 'CS-319', '2', 'Spring', 2010, 'A'),
-('76653', 'EE-181', '1', 'Spring', 2009, 'C'),
-('98765', 'CS-101', '1', 'Fall', 2009, 'C'),
-('98765', 'CS-315', '1', 'Spring', 2010, 'B'),
-('98988', 'BIO-101', '1', 'Summer', 2009, 'A'),
-('98988', 'BIO-301', '1', 'Summer', 2010, null);
+('00128', 'CS-101', '1', 'Fall', 2024, 'A'),
+('00128', 'CS-347', '1', 'Fall', 2024, 'A'),
+('12345', 'CS-101', '1', 'Fall', 2024, 'C'),
+('12345', 'CS-190', '2', 'Spring', 2024, 'A'),
+('12345', 'CS-315', '1', 'Spring', 2024, 'A'),
+('12345', 'CS-347', '1', 'Fall', 2024, 'A'),
+('19991', 'HIS-351', '1', 'Spring', 2024, 'B'),
+('23121', 'FIN-201', '1', 'Spring', 2024, 'C+'),
+('44553', 'PHY-101', '1', 'Fall', 2024, 'B'),
+('45678', 'CS-101', '1', 'Fall', 2024, 'F'),
+('45678', 'CS-101', '1', 'Spring', 2024, 'B+'),
+('45678', 'CS-319', '1', 'Spring', 2024, 'B'),
+('54321', 'CS-101', '1', 'Fall', 2024, 'A'),
+('54321', 'CS-190', '2', 'Spring', 2024, 'B+'),
+('55739', 'MU-199', '1', 'Spring', 2024, 'A'),
+('76543', 'CS-101', '1', 'Fall', 2024, 'A'),
+('76543', 'CS-319', '2', 'Spring', 2024, 'A'),
+('76653', 'EE-181', '1', 'Spring', 2024, 'C'),
+('98765', 'CS-101', '1', 'Fall', 2024, 'C'),
+('98765', 'CS-315', '1', 'Spring', 2024, 'B'),
+('98988', 'BIO-101', '1', 'Summer', 2024, 'A'),
+('98988', 'BIO-301', '1', 'Summer', 2024, null);
 
 -- Insert entries into the advisor table
 INSERT INTO advisor (s_ID, i_ID)

@@ -1,46 +1,103 @@
-{% extends "base.html" %}
-
-{%block title%}
-Home
-{%endblock title%}
-
-
-{% block body %}
+{% extends "base.html" %} {%block title%} Home {%endblock title%} {% block body
+%}
 
 <div class="container mt-5">
-    <!-- Student Profile Card -->
-    <div class="card">
-      <div class="card-header bg-info">
-        My Profile
-      </div>
-      <div class="card-body">
+  <div class="card">
+    <div class="card-header text-center bg-info">
+        <div class="jumbotron text-center">
+            <h3 class="display-6">{{ student.name }}'s Profile</h3>
+        </div>
+    </div>
+    <div class="card-body">
         <div class="row">
-            <div class="col-md-1">
-            
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <!-- Student Image -->
+                <img src="static\images\student_.jpg" class="img-fluid rounded-circle" alt="Student Image" />
             </div>
-          <div class="col-md-3">
-            <!-- Student Image -->
-            <img src="static\images\student.jpg" class="img-fluid rounded-circle" alt="Student Image">
-          </div>
-          <div class="col-md-1">
-            
-          </div>
-          <div class="col-md-7">
-            <!-- Student Information -->
-            
-            <h5 class="card-title">John Doe</h5> <!-- Student Name -->
-            <p class="card-text">Department: Computer Science</p> <!-- Department Name -->
-            <p class="card-text">Advisor: Dr. Smith</p> <!-- Advisor Name -->
-            <p class="card-text">Section: A</p> <!-- Section Name -->
-            <p class="card-text">Year: 2023</p> <!-- Year -->
-          </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-7">
+                <div class="jumbotron text-center">
+                  <h3 class="card-text font-weight-light ">
+                    ID : {{ student.ID }}
+                </h3>
+                    <h3 class="card-text font-weight-light ">
+                        Department: {{ student.department.dept_name }}
+                    </h3>
+                    <h3 class="card-text font-weight-light ">
+                        Advisor: {{ student.advisor.instructor.name if student.advisor else "N/A" }}
+                    </h3>
+                    <h3 class="card-text font-weight-light mb-0">
+                        Total Credits: {{ student.tot_cred }}
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <hr class="my-4" />
+  <div class="jumbotron text-center">
+    <h3 class="display-6">Courses Enrolled</h3>
+  </div>
+
+  <div class="accordion" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button
+          class="btn btn-outline-info accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapse-s"
+          aria-expanded="false"
+          aria-controls="flush-collapse-s"
+        >
+          <h5 class="">Your Courses</h5>
+        </button>
+      </h2>
+      <div
+        id="flush-collapse-s"
+        class="accordion-collapse collapse show"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="accordion-body">
+          <table class="table table-striped caption-top">
+            <thead class="table">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Course Id</th>
+                <th scope="col">Section</th>
+                <th scope="col">Semester</th>
+                <th scope="col">Year</th>
+                <th scope="col">Grade</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              {% for k in courses_taken %}
+
+              <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ k.course_id }}</td>
+                <td>{{ k.sec_id}}</td>
+                <td>{{ k.semester }}</td>
+                <td>{{ k.year }}</td>
+                <td>{{ k.grade}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="100%" align="center">
+                  {{courses_taken|length ~ " Courses Taken."}}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
     </div>
   </div>
-
-
-
-
+</div>
 
 {%endblock body%}
