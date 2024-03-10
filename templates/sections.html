@@ -1,69 +1,74 @@
 {% extends "base.html" %}
+ {% block title %} Sections {% endblock title %}
+ 
+ {% block body %}
 
-{% block title %}
-Home
-{% endblock title %}
+<div class="container mb-5 mt-5 ">
+  <div class="jumbotron text-center">
+    <h1 class="display-4">
+      Sections at <i class="fa-brands fa-x-twitter fa-sm"></i>
+    </h1>
+    <p class="lead">Welcome to the Section Dashboard! Access tools for Handle Sections at X University!</p>
 
+    <a href="/add_section"
+      ><button class="btn btn-outline-secondary">
+        <i class="fa-solid fa-plus fa-fade"></i> Add Section or Courses
+      </button></a
+    >
+    <hr class="my-4" />
+  </div>
 
-{% block body %}
+  <div class="accordion" id="accordionFlushExample">
+    {% for s in sec %}
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button
+          class="btn btn-outline-info accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapse-{{ s }}"
+          aria-expanded="false"
+          aria-controls="flush-collapse-{{ s }}"
+        >
+          Section {{ s }}
+        </button>
+      </h2>
+      <div  id="flush-collapse-{{s}}"class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <table class="table table-striped caption-top">
+            <thead class="table">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">course id</th>
+                <th scope="col">semester</th>
+                <th scope="col">year</th>
+                <th scope="col">building</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              {% for k in sections if k.sec_id == s %}
 
-<div class="container mb-5mt-5">
-    <div class="jumbotron text-center">
-        <h1 class="display-4">Sections at <i class="fa-brands fa-x-twitter fa-sm"></i> </h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <a href="/add_section"><button class="btn btn-outline-secondary"><i class="fa-solid fa-plus fa-fade"></i> Add Section or Courses </button></a> 
-        <hr class="my-4">
-    </div>
-
-
-    <div class="accordion " id="accordionFlushExample">
-        {% for s in sec %}
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button  class=" btn btn-outline-info accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-                        data-bs-target="#flush-collapse-{{ s }}" aria-expanded="false" 
-                        aria-controls="flush-collapse-{{ s }}">
-                Section {{ s }}
-                </button>
-            </h2>
-            <div id="flush-collapse-{{ s}}" class="accordion-collapse collapse" 
-                data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">
-                    <table class="table table-striped caption-top">
-                        <thead class="table">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">course id</th>
-                                <th scope="col">semester</th>
-                                <th scope="col">year</th>
-                                <th scope="col">building</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            {% for k in sections if k.sec_id == s %}
-                            
-                            <tr>
-                                <th scope="row">{{ loop.index }}</th>
-                                <td>{{ k.course_id }}</td>
-                                <td>{{ k.semester }}</td>
-                                <td>{{ k.year }}</td>
-                                <td>{{ k.building}}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="100%" align='center'>
-                                   Section {{s}}
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
+              <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ k.course_id }}</td>
+                <td>{{ k.semester }}</td>
+                <td>{{ k.year }}</td>
+                <td>{{ k.building}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="100%" align="center">Section {{s}}</td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
-    {% endfor %}
+      </div>
     </div>
-</div>
+    {% endfor %}
+    <hr>
+  </div>
 
+</div>
 {% endblock body %}

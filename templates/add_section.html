@@ -1,6 +1,8 @@
-{% extends "base.html" %} {% block title %} Add Section {% endblock title %} {%
-block css %}
+{% extends "base.html" %}
 
+ {% block title %} Add Section {% endblock title %}
+ 
+ {%block css %}
 <style>
   .divider::after,
   .divider::before {
@@ -20,25 +22,27 @@ block css %}
     }
   }
 </style>
-{% endblock css %}
-
-
+{% endblock css %} 
 
 
 {% block body %}
-<div class="container">
-  <section class="vh-100">
+
+<div class="container ">
+  <section class="vh-250">
     <div class="container-fluid h-custom">
-      <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="row d-flex justify-content-center align-items-center h-250">
         <div class="col-md-9 col-lg-6 col-xl-5">
-          <img src="\static\images\section.jpg" class="img-fluid" alt=" image" />
+          <img
+            src="\static\images\section.jpg"
+            class="img-fluid"
+            alt=" image"
+          />
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
           <form action="/add_section" method="post">
             <div class="divider d-flex align-items-center my-4">
               <p class="text-center mx-3 mb-0 display-6">Add Section</p>
             </div>
-
 
             <div class="form-floating mb-3">
               <input
@@ -126,12 +130,20 @@ block css %}
             </div>
 
             <div class="text-center text-lg-start mt-4 pt-2">
-                <button type="submit" class="btn btn-outline-success btn-lg">Add Section</button>
-              </div>
-            </form>
-          </div>
+              <button type="submit" class="btn btn-outline-success btn-lg">
+                Add Section
+              </button>
+            </div>
+          </form>
+
         </div>
       </div>
-    </section>
-  </div>
-  {% endblock body %}
+    </div>
+  </section>
+  <hr class= "my-5"/>
+</div>
+
+
+
+
+{% endblock body %}
